@@ -7,7 +7,7 @@ resource "google_compute_network" "vpc_network" {
 resource "google_compute_firewall" "allow_https" {
   name = "allow-https"
   source_ranges= ["0.0.0.0/0"]
-  network = var.vpc_network
+  network = google_compute_network.vpc_network.id
   project= var.project_id
 
   allow { 
@@ -19,7 +19,7 @@ resource "google_compute_firewall" "allow_https" {
 resource "google_compute_firewall" "iap" {
   name = "allow-ssh-rdp-iap"
   source_ranges = ["35.235.240.0/20"]
-  network = var.vpc_network
+  network = google_compute_network.vpc_network.id
   project = var.project_id
 
   allow {
