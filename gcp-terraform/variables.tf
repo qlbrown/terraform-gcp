@@ -42,7 +42,7 @@ variable "vm_image" {
 variable "startup_script" {
   type    = string
   default = <<-EOT
-    #!/bin/bash
+    #! /bin/bash
     sudo apt-get update
     sudo apt-get install -y apache2 nginx mysql-client
     sudo service nginx start
